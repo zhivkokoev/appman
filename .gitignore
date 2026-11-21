@@ -1,0 +1,90 @@
+# ---------------------------------------------------------------------------
+# AppMan: root .gitignore
+# Flutter projects in app/ and spike/ also carry their own .gitignore files;
+# this one adds repository-wide rules and a safety net for sensitive data.
+# ---------------------------------------------------------------------------
+
+# --- Vault data, keys and tokens: NEVER commit these -----------------------
+# (AppMan keeps them in %APPDATA%\AppMan, but dev runs with APPMAN_HOME or
+#  test fixtures could drop them anywhere in the working tree.)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+vault.keys
+vault.keys.tmp
+*.keys
+*.dpapi
+*.dpapi.tmp
+*.restoring
+/backups/
+**/backups/
+pre-restore-*/
+appman_dev_vault*/
+
+# --- Exports and reports that may contain secrets --------------------------
+appman-full-export-*
+appman-report-*
+*.env
+.env
+.env.*
+!.env.example
+
+# --- Credentials and signing material --------------------------------------
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+client_secret*.json
+credentials.json
+service-account*.json
+google-services.json
+
+# --- Flutter / Dart build output and tooling -------------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+*.iml
+**/windows/flutter/ephemeral/
+**/doc/api/
+.fvm/
+.fvmrc
+app.*.symbols
+app.*.map.json
+
+# Local test/spike output
+spike_result.txt
+*.log
+
+# --- Editors and IDEs ------------------------------------------------------
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+*.sublime-workspace
+
+# --- OS junk ---------------------------------------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Claude Code local settings (may hold machine-specific permissions) -----
+.claude/settings.local.json
