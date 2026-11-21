@@ -66,7 +66,7 @@ Windows:
 
 ```powershell
 git clone <this repository>
-cd appman\app
+cd appman
 flutter pub get
 flutter run -d windows            # development
 flutter build windows --release   # produces build\windows\x64\runner\Release\appman.exe
@@ -78,7 +78,7 @@ Linux:
 
 ```bash
 git clone <this repository>
-cd appman/app
+cd appman
 flutter pub get
 flutter run -d linux              # development
 flutter build linux --release     # produces build/linux/x64/release/bundle/appman
@@ -115,7 +115,6 @@ You bring your own client; nothing is shared with the author.
 ## Tests
 
 ```bash
-cd app
 flutter analyze
 flutter test
 ```
@@ -125,16 +124,11 @@ The suite covers the crypto and key handling, the schema and every store, search
 ## Repository layout
 
 ```
-FUNCTIONAL_SPEC.md   functional description, decisions and implementation status
-app/                 the Flutter application
-  lib/core/          crypto, vault, database stores, backup, platform bindings, services
-  lib/ui/            screens and dialogs
-  test/
-  windows/, linux/  desktop runners
-spike/               throwaway prototype that validated SQLCipher + Argon2id with Flutter on Windows
+lib/core/            crypto, vault, database stores, backup, platform bindings, services
+lib/ui/              screens and dialogs
+test/
+windows/, linux/     desktop runners
 ```
-
-[`FUNCTIONAL_SPEC.md`](FUNCTIONAL_SPEC.md) explains the design decisions (why Flutter, why a wrapped data key, why Drive is backup only) and lists what is implemented versus planned.
 
 ## Known limitations
 
@@ -155,4 +149,4 @@ To report a security problem, please open a private security advisory on the rep
 
 AppMan is released under the [MIT License](LICENSE).
 
-It builds on third-party software with its own licenses, notably Flutter (BSD-3-Clause), SQLCipher community edition (BSD-style) and the OpenSSL it links on Windows and Linux (Apache-2.0), Argon2 (CC0 / Apache-2.0), and the Dart packages listed in `app/pubspec.yaml`. If you redistribute binaries, include their notices. Flutter can list them for you: the `LicenseRegistry` holds every package license in the build.
+It builds on third-party software with its own licenses, notably Flutter (BSD-3-Clause), SQLCipher community edition (BSD-style) and the OpenSSL it links on Windows and Linux (Apache-2.0), Argon2 (CC0 / Apache-2.0), and the Dart packages listed in `pubspec.yaml`. If you redistribute binaries, include their notices. Flutter can list them for you: the `LicenseRegistry` holds every package license in the build.
